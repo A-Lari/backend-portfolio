@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const databaseName = "portfolio";
-const DB_URI = `mongodb://localhost:3001/${databaseName}`;
+const DB_URI = `mongodb://localhost:27017/${databaseName}`;
 
 mongoose
   .connect(DB_URI)

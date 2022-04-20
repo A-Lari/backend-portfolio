@@ -1,4 +1,5 @@
 var express = require("express");
+require("dotenv").config();
 require("./db");
 const cors = require("cors");
 var path = require("path");

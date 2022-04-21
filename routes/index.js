@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const SiteModel = require("../models/Sites");
-const ProjectModel = require("../models/Projects");
+
 
 /* GET home page. */
 router.get("/", function (req, res) {
@@ -16,9 +16,13 @@ router.get("/sites/:id", function (req, res) {
   });
 });
 
-router.get("/projects", (req, res) => {
-  ProjectModel.find().then((projectsList) => {
-    res.send(projectsList);
+router.get("/sites", function (req, res) {
+  SiteModel.find().then((site) => {
+    console.log(site);
+    if (site.length > 0) res.json(site[0]);
+    else {
+      res.sendStatus(400);
+    }
   });
 });
 

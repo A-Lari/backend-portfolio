@@ -6,8 +6,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+const SECRET = "my-amazing-secret";
+
 var indexRouter = require("./routes/index");
-var projectsRouter = require("./routes/projects");
+const projectsRouter = require("./routes/projects");
+const authRouter = require("./routes/auth");
 
 var app = express();
 
@@ -18,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", indexRouter);
+app.use("/auth", authRouter);
 app.use("/projects", projectsRouter);
 
 app.use(express.static(path.join(__dirname, "public")));

@@ -5,7 +5,7 @@ const SiteSchema = new mongoose.Schema({
   logo: String,
   footer: String,
   presentation_texte: String,
-});
+}, { timestamps: true });
 
 const SiteModel = mongoose.model("Site", SiteSchema);
 

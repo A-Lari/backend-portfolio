@@ -6,7 +6,7 @@ const Project = require("./models/Projects");
 const project = [
     {
         title: "Projet1",
-        summary: "résumé du projet 1",
+        summary: "résumé du projet 2",
         image: "projet1.png",
         lien_github: "https://github.com/A-Lari/frontend-portfolio",
         content: "Contenu du projet 1",

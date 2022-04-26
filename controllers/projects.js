@@ -2,7 +2,11 @@ const { ProjectModel } = require("../models/Projects");
 
 const projectController = {
   getProjects(req, res) {
-    ProjectModel.find()
+    console.log("==========> getProjects");
+    const title = req.query.title;
+    const query = title === "" ? {} : {title:{'$regex' : `^${title}`, '$options' : 'i'}};    
+    console.log(query);
+    ProjectModel.find(query)
       .populate("techno")
       .then((projectsList) => {
         res.send(projectsList);
@@ -10,6 +14,7 @@ const projectController = {
   },
 
   getProject(req, res) {
+    console.log("==========> getProject");
     const idProject = req.params.idProject;
     ProjectModel.findById(idProject)
       .populate("techno")
@@ -19,6 +24,7 @@ const projectController = {
   },
 
   addLikes(req, res) {
+    console.log("==========> addLikes");
     const idProject = req.params.idProject;
     ProjectModel.findOneAndUpdate(
       { _id: idProject },
@@ -71,9 +77,10 @@ const projectController = {
 
   searchByTitle(req, res) {
     const title = req.params.title;
-    console.log(title);
+    console.log("searchByTitle", title);
 
-    ProjectModel.find({ title })
+    const query = title === "All" ? {} : {title:{'$regex' : `^${title}`, '$options' : 'i'}};
+    ProjectModel.find(query)
       .populate("techno")
       .then((projectsList) => {
         res.send(projectsList);

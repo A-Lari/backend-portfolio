@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const databaseName = "portfolio";
-const DB_URI = `${process.env.DB_URI}${databaseName}`;
+const MONGO_URL = `${process.env.MONGO_URL}${databaseName}`;
 
 mongoose
-  .connect(DB_URI)
+  .connect(MONGO_URL)
   .catch(() => console.log("pas connected to db"))
   .then(() => console.log("connected to DB"));

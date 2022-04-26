@@ -1,8 +1,8 @@
 var express = require("express");
+const CarouselImgController = require("../controllers/carouselimg");
 var router = express.Router();
 
 const SiteModel = require("../models/Sites");
-
 
 /* GET home page. */
 router.get("/", function (req, res) {
@@ -25,5 +25,7 @@ router.get("/sites", function (req, res) {
     }
   });
 });
+
+router.get("/carouselimgs", CarouselImgController.getCarouselImg);
 
 module.exports = router;

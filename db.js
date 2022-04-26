@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 
-const databaseName = "portfolio";
-const MONGO_URL = `${process.env.MONGO_URL}/${databaseName}`;
+const MONGO_URL = process.env.MONGO_URL;
 
-if (!process.env.MONGO_URL) {
+if (!MONGO_URL) {
   console.log("pas de mongo");
   process.exit(1);
 }

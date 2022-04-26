@@ -26,6 +26,17 @@ router.get("/sites/:id", function (req, res) {
   });
 });
 
+router.delete("/sites/:id", function (req, res) {
+  console.log("==========> maj site");
+  const idSite = req.params.id;
+  console.log(idSite);
+  SiteModel.findByIdAndRemove(idSite)
+    .then((result) => {
+      console.log("site supprimé", result);
+      res.send("site supprimé");
+    });
+});
+
 router.get("/sites", function (req, res) {
   SiteModel.find().then((site) => {
     console.log(site);
